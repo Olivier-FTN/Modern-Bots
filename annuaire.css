@@ -1,0 +1,212 @@
+body, html{
+    position: relative;
+    height: 100%;
+    
+}
+
+#header > img {
+    display:block;
+    width: 100%;
+    height: 350px;
+    margin:auto;
+    padding:auto;
+}
+
+body {
+    background-color: grey;
+    padding-top: 20px;
+    margin-bottom: 60px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+#contenue > a:hover { 
+    color:silver;
+    text-decoration:none;
+    background-color: rgb(1, 1, 49);
+    background-repeat:no-repeat;
+    }
+
+#contenue {
+    position: relative;
+    margin-top: 7%;
+    margin-bottom: 17%;
+}
+
+#contenue > a > div > h3 {
+    color: white;
+    text-align: center;
+}
+
+#contenue > a > div > p {
+    text-align: center;
+}
+
+p {
+    color: white;
+}
+
+#footer {
+    background-color: black;
+    position: absolute;
+    right: 0;
+    left: 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top: 50px;
+}
+
+* {-moz-box-sizing: border-box; 
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+#footer > p {
+    text-align: center;
+}
+
+  .bloc_lien {
+    display: block;
+    background: black;
+    border-radius: 10px;
+    height: 100%;
+    padding: 30px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-right: 25%;
+    margin-left: 25%;
+    text-align: center;
+    
+}
+
+.bloc_lien > h3 {
+    color: white;
+}
+.form-cnx {
+    padding: 10px 10px 10px 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(1, 1, 49);
+    border-width: 5px;
+    border-style: groove;
+    border-color: black;
+}
+
+.form-cnx > article >h1{
+    text-align: center;
+    color: white;
+    padding: 5px 5px 5px 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+}
+
+#menu {
+    padding: 0px 0px 200px 0px;
+    margin-top: 1px;
+    margin-bottom: 100px;
+    padding: 0px;
+}
+
+
+#menu a { 
+	display:block; 
+	color: #fff; 
+	text-decoration:none;
+}
+#menu > li,
+#menu > li li {
+	position: relative;
+	display:inline-block;
+    width: 160px;
+    text-align: center;
+	padding: 6px 15px;
+	background-color: black;
+	/*background-image: linear-gradient(#aaa, #888 50%, #777 50%,#999);*/
+}
+#menu > li li { background: transparent none; }
+#menu > li li a { color: #444; }
+#menu > li li:hover { background:rgb(1, 1, 49); }
+#menu > li:first-child {
+	border-right: 1px solid #777;
+
+}
+#menu > li + li {
+	border-left: 1px solid #aaa;
+	border-right: 1px solid #777;
+}
+#menu > li:last-child {
+	border-right: 0;
+	border-left: 1px solid #aaa;
+
+}
+#menu > li:hover {
+	background-color: #999;
+	background-image: linear-gradient(#ccc, #aaa 50%, #999 50%,#bbb);
+}
+
+.panel panel-default{
+    background-image: linear-gradient(#ccc, #aaa 50%, #999 50%,#bbb); 
+}
+/* (presque) fin de la partie positionnement/déco */
+/* dans cette déclaration, on fixe le max-height */
+#menu ul {
+	position: absolute;
+	top: 2em; left: 0;
+	max-height:0em;	
+	margin: 0; padding: 0;
+	background-color: #ddd;
+	background-image: linear-gradient(#fff,#ddd);
+	overflow: hidden;
+	transition: 1s max-height 0.3s;
+	border-radius: 0 0 8px 8px;
+}
+/* ici on change la valeur de max-height au :hover */
+#menu > li:hover ul {
+	/* à adapter, le minimum est le meilleur mais voyez large 😉 */
+	max-height: 13em;
+}
+
+.panel panel-default {
+    margin-top: 2px;
+}
+
+.panel-body {
+    background-color: black;
+    color: white;
+}
+
+.prod {
+    border-width: 2px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: none;
+    color: white;
+    background-color: black;
+    padding: 235px 0px 10px 0px;
+    margin-right: 25%;
+    margin-left: 25%;
+}
+
+.img_prod{
+    width: 300px;
+    height: 250px;
+}
