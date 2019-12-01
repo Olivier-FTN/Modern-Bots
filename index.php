@@ -4,33 +4,58 @@
   header("Cache-Control: no-cache");
   header("Pragma: no-cache");
   
-  
+  session_start();
+
   try {
     if (isset($_REQUEST['action'])) {
       require "controleur.php";
       $employe = new Employes();
 
-      if ($_POST['action'] == 'Supprimer') {
+      if ($_REQUEST['action'] == 'Supprimer') {
         $employe->setdelete(intval($_POST['ide']));
       } 
 
-      if ($_POST['action'] == 'Ajouter') {
+      if ($_REQUEST['action'] == 'Ajouter') {
         $employe->setAdd($_POST);
       } 
 
-      if ($_POST['action'] == 'connexion') {
-        //echo "lulu";
-        $employe->getSelectUser($_POST['mail']);
-      } 
+      if ($_REQUEST['action'] == 'connexion') {
+          $username = filter_var($_REQUEST["mail"], FILTER_SANITIZE_STRING);
+          $password = filter_var($_REQUEST["mdp"], FILTER_SANITIZE_STRING);
+          require_once "clients.php";
+          require_once "controleur.php";
+          $client = new Client();
+          $employes = new Employes();
+          
+          $tblEmp = $employes->getSelectCli();
+          
+          $isLoggedIn = $client->verifLogin($username, $password);
+          
+          if(!$isLoggedIn) {
+            //pas trouvé
+            include "view_connexion.php";
+            echo 'Les informations d\'identification sont invalides';
+            exit();
+          } else {
+            //trouve
+            include "view_menu.php";
+          }
+      }
+      
+      if ($_REQUEST['action'] == 'Deconnexion'){
+        unset($_SESSION["userId"]);
+        unset($_SESSION["userNom"]);
+        include "./view_connexion.php";
+      }
 
-      if ($_POST['action'] == 'Modifier') {
+      if ($_REQUEST['action'] == 'Modifier') {
         $_POST['ide']=intval($_POST['ide']);
         $employe->setUpdate($_POST);
       } 
 
-      if ($_POST['action'] == 'Rechercher') {
+      if ($_REQUEST['action'] == 'Rechercher') {
         $tblEmp = $employe->Search($_POST);
-        include "vue.php";
+        include "view_prod.php";
       }
 
       if ($_GET['action'] == 'Admin') {
@@ -38,16 +63,12 @@
       }
       
       if ($_GET['action'] == 'Menu') {
-        header('Location: ./view_menu.php');
+        header('Location: ./view_connexion.php');
         $tblEmp = $employe->getSelect();
         $employes = new Employes(); 
       }
 
-      if ($_GET['action'] == 'Deconnexion'){
-        session_start();
-        session_destroy();
-        include "./view_inscription.php";
-      }
+      
 
       if ($_GET['action'] == 'Accueil') {
         $tblEmp = $employe->getSelect();
@@ -65,14 +86,4 @@
   catch (Exception $e) {
       erreur($e->getMessage());
   }
-  
-  /*if ($_POST ) {
-    echo "";
-
-    if (!isset($_POST['nom']) or !isset($_POST['prenom']) or !isset($_POST['tel']) or !isset($_POST['cp']) or !isset($_POST['vil']) or !isset($_POST['mail']) or !isset($_POST['mdp'])   ) {
-        echo "erreurs";
-        //var_dump($_POST);
-    }
-  }*/
-  
 ?>
