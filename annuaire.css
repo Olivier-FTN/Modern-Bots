@@ -4,12 +4,34 @@ body, html{
     
 }
 
+#search {
+    width: 150px;
+}
+
+#search-btn {
+    float: right;
+}
+
 #header > img {
     display:block;
     width: 100%;
     height: 350px;
     margin:auto;
     padding:auto;
+}
+
+.session_cli {
+    background-color: rgb(1, 1, 49);
+    border-style: groove;
+    border-color: white;
+    color: white;
+    border-radius: 5px;
+    border-width: 2px;
+    margin-right: 89%;
+    text-align: center;
+    position: relative;
+    top: -340px;
+    left: 1350px;
 }
 
 body {
@@ -37,7 +59,7 @@ a {
 #contenue {
     position: relative;
     margin-top: 7%;
-    margin-bottom: 17%;
+    margin-bottom: 7%;
 }
 
 #contenue > a > div > h3 {
@@ -95,6 +117,7 @@ p {
     margin-left: auto;
     margin-right: auto;
     width: 400px;
+    height: 450px;
     margin-top: 5%;
     margin-bottom: 5%;
     text-align: center;
@@ -103,6 +126,17 @@ p {
     border-width: 5px;
     border-style: groove;
     border-color: black;
+}
+
+.form-cnx > article > form > label {
+    color: white;
+    float:left;
+    margin-left: 40px;
+}
+
+.form-cnx > article > form > input {
+    float:right;
+    margin-right: 40px;
 }
 
 .form-cnx > article >h1{
@@ -120,7 +154,7 @@ p {
 
 #menu {
     padding: 0px 0px 200px 0px;
-    margin-top: 1px;
+    margin-top: -22px;
     margin-bottom: 100px;
     padding: 0px;
 }
@@ -135,7 +169,7 @@ p {
 #menu > li li {
 	position: relative;
 	display:inline-block;
-    width: 160px;
+    width: 256px;
     text-align: center;
 	padding: 6px 15px;
 	background-color: black;
@@ -201,12 +235,65 @@ p {
     background-color: none;
     color: white;
     background-color: black;
-    padding: 235px 0px 10px 0px;
     margin-right: 25%;
     margin-left: 25%;
+    margin-bottom: 25px;
 }
 
 .img_prod{
     width: 300px;
     height: 250px;
+}
+
+.form-cnx2 {
+    padding: 10px 10px 10px 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: 250px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(1, 1, 49);
+    border-width: 5px;
+    border-style: groove;
+    border-color: black;
+}
+
+.form-cnx2 > article > form > label {
+    color: white;
+    float:left;
+    margin-left: 40px;
+}
+
+.form-cnx2 > article > form > input {
+    float:right;
+    margin-right: 40px;
+}
+
+.form-cnx2 > article >h1{
+    text-align: center;
+    color: white;
+    padding: 5px 5px 5px 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+}
+
+.img_pos {
+    float:left;
+}
+
+.text_pos {
+    text-align: center;
+}
+
+.btn_panier > input {
+    margin-left: 190px;
+    border-radius: 5px;
 }
