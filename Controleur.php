@@ -3,47 +3,58 @@
 require_once("modele.php");
 
 class Employes extends DB {
+  function getSelectCat($categorie){
 
-  function getSelect(){
+    $strSQL = "SELECT * FROM produits where cat_prod = '".$categorie."';";
+    
+    $tabValeur = array("*");
+    //$tabValeur = array($categorie);
+    $sel = $this->Requete($strSQL, $tabValeur);
+    return $sel;
+  }
 
-    $strSQL = "SELECT * FROM produits";
+
+  function getSelect($cat){
+  
+    $strSQL = "SELECT * FROM produits where cat_prod = ?";
+    //$tabValeur = array("*");
+    $tabValeur = array($cat);
+    $sel = $this->Requete($strSQL, $tabValeur);
+    return $sel;
+  }
+
+  function getSelectCli(){
+    $strSQL = "SELECT * FROM clients";
     $tabValeur = array("*");
     $sel = $this->Requete($strSQL, $tabValeur);
     return $sel;
   }
 
-  function getSelectUser(){
-    $strSQL = "SELECT * FROM clients where mail_cli = ?";
-    $tabValeur = array("*");
-    $sel = $this->Requete($strSQL, $tabValeur);
-    return $sel;
-  }
-
-  function setDelete($id){
+  /*function setDelete($id){
 
     $strSQL = "DELETE FROM tbl_employe WHERE emp_id = ?";
     $tabValeur = array($id);
     $del = $this->Requete($strSQL, $tabValeur);
     return $del;
-  }
+  }*/
 
-  function setAdd($tblemp){
+  function setAdd(){
     $strSQL = "INSERT INTO clients (nom_cli, prenom_cli, num_tel_cli, cp_cli, vil_cli, mail_cli, mdp_cli) 
     VALUES (?, ?, ?, ?, ?, ?, ?)";
     $tabValeur = array(
-      $tblemp['nom'],
-      $tblemp['prenom'],
-      $tblemp['tel'],
-      $tblemp['cp'],
-      $tblemp['vil'],
-      $tblemp['mail'],
-      $tblemp['mdp']       
+      $_POST['nom'],
+      $_POST['prenom'],
+      $_POST['tel'],
+      $_POST['cp'],
+      $_POST['vil'],
+      $_POST['mail'],
+      sha1($_POST['mdp'])       
     );
     $ins = $this->Requete($strSQL, $tabValeur);  
     return $ins;
 }
 
-  function setUpdate($tblemp){
+  /*function setUpdate($tblemp){
 
     $strSQL = "UPDATE tbl_employe SET emp_pnom = :pnom, emp_nom = :nom, emp_tel = :tel WHERE emp_id = :ide;";
 
@@ -56,25 +67,16 @@ class Employes extends DB {
     
     $upd = $this->Requete($strSQL, $tabValeur);
     return $upd;
-  }
+  }*/
 
   function Search($tblemp){
 
-    $strSQL = "SELECT * FROM tbl_employe 
-                WHERE emp_pnom LIKE  :pnom 
-                OR emp_nom     LIKE  :nom 
-                OR emp_tel     LIKE  :tel 
-              ";
+    $strSQL = "SELECT * FROM produits 
+                WHERE lib_prod LIKE  :libProd";
 
-    empty($tblemp['prenom'])  ? $tblemp['prenom'] = '*' : $tblemp['prenom']; 
-    empty($tblemp['nom'])     ? $tblemp['nom']    = '*' : $tblemp['nom']; 
-    empty($tblemp['tel'])     ? $tblemp['tel']    = '*' : $tblemp['tel']; 
+    empty($tblemp['lib_prod'])  ? $tblemp['lib_prod'] = '*' : $tblemp['lib_prod']; 
 
-    $tabValeur = array(
-          'pnom'  => "%".$tblemp['prenom']."%", 
-          'nom'   => "%".$tblemp['nom']."%", 
-          'tel'   => "%".$tblemp['tel']."%"
-        );
+    $tabValeur = array('libProd'  => "%".$tblemp['lib_prod']."%");
 
     $sch = $this->Requete($strSQL, $tabValeur);
     return $sch;
