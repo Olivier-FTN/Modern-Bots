@@ -3,6 +3,7 @@
 <head>
 <?php
     require_once('header.php');
+    unset($_SESSION["userId"]);
 ?>
     <meta charset="utf-8">
     <title>Modern Bots</title> 
