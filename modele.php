@@ -6,7 +6,7 @@ class DB {
 
   function __construct(){
 
-    $this->cnx = new PDO("mysql:host=localhost;dbname=mb;charset=utf8", "root", "olivier" );
+    $this->cnx = new PDO("mysql:host=localhost;dbname=mb;charset=utf8", "olivier", "root" );
 }
 
   function __destruct(){
